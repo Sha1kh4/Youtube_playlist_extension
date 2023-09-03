@@ -65,18 +65,13 @@ def find_time_slice():
     return time_slice
 
 
-app = Flask(__name__, static_url_path='/static')
+app = Flask(__name__)
 
 
-@app.route("/", methods=['GET', 'POST'])
-def home():
-    if (request.method == 'GET'):
-        return render_template("home.html")
-
-    else:
-
+@app.route("/summary")
+def home(playlist_link):
+        playlist_link = request.args.get('url', '')
         # get playlist link/id as input from the form
-        playlist_link = request.form.get('search_string').strip()
         playlist_id = get_id(playlist_link)
 
         # initializing variables
@@ -136,27 +131,7 @@ def home():
                 ]
                 break
 
-        return render_template("home.html", display_text=display_text)
+        return display_text
 
-
-@app.route("/healthz", methods=['GET', 'POST'])
-def healthz():
-    return "Success", 200    
-    
-    
-@app.route('/.well-known/brave-rewards-verification.txt')
-def static_from_root_brave():
-    return Response(
-        'This is a Brave Rewards publisher verification file.\n\nDomain: ytplaylist-len.herokuapp.com\nToken: aae68b8a5242a8e5f0505ee6eaa406bd51edf0dc9a05294be196495df223385c',
-        mimetype='text/plain')
-
-
-@app.route('/ads.txt')
-def static_from_root_google():
-    return Response(
-        'google.com, pub-8874895270666721, DIRECT, f08c47fec0942fa0',
-        mimetype='text/plain')
-
-
-if __name__ == "__main__":
-    app.run(use_reloader=True, debug=False)
+if __name__ == '__main__':
+    app.run()
