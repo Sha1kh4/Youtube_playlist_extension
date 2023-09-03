@@ -7,7 +7,8 @@ import re
 import requests
 import os
 
-APIS = os.environ['APIS'].strip('][').split(',')
+
+APIS = # Enter Api here to use the extension
 
 URL1 = 'https://www.googleapis.com/youtube/v3/playlistItems?part=contentDetails&maxResults=50&fields=items/contentDetails/videoId,nextPageToken&key={}&playlistId={}&pageToken='
 URL2 = 'https://www.googleapis.com/youtube/v3/videos?&part=contentDetails&id={}&key={}&fields=items/contentDetails/duration'
@@ -69,7 +70,7 @@ app = Flask(__name__)
 
 
 @app.route("/summary")
-def home(playlist_link):
+def home():
         playlist_link = request.args.get('url', '')
         # get playlist link/id as input from the form
         playlist_id = get_id(playlist_link)
@@ -81,7 +82,7 @@ def home(playlist_link):
         tsl = find_time_slice()
         display_text = []  # list to contain final text to be displayed, one item per line
 
-        print(APIS[tsl])
+        print(APIS)
         # when we make requests, we get the response in pages of 50 items
         # which we process one page at a time
         while True:
@@ -89,8 +90,8 @@ def home(playlist_link):
 
             try:
                 # make first request to get list of all video_id one page of response
-                print(URL1.format(APIS[tsl].strip("'"), playlist_id))
-                results = json.loads(requests.get(URL1.format(APIS[tsl].strip("'"), playlist_id) + next_page).text)
+                print(URL1.format(APIS.strip("'"), playlist_id))
+                results = json.loads(requests.get(URL1.format(APIS.strip("'"), playlist_id) + next_page).text)
 
                 # add all ids to vid_list
                 for x in results['items']:
@@ -107,7 +108,7 @@ def home(playlist_link):
 
             try:
                 # now to get the durations of all videos in url_list
-                op = json.loads(requests.get(URL2.format(url_list, APIS[tsl].strip("'"))).text)
+                op = json.loads(requests.get(URL2.format(url_list, APIS.strip("'"))).text)
 
                 # add all the durations to a
                 for x in op['items']:
