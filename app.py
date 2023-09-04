@@ -8,7 +8,7 @@ import requests
 import os
 
 
-APIS = # Enter Api here to use the extension
+APIS ="AIzaSyDvUhY4xJKsjvwOyoDRAgWqkvyysP4PfgU"
 
 URL1 = 'https://www.googleapis.com/youtube/v3/playlistItems?part=contentDetails&maxResults=50&fields=items/contentDetails/videoId,nextPageToken&key={}&playlistId={}&pageToken='
 URL2 = 'https://www.googleapis.com/youtube/v3/videos?&part=contentDetails&id={}&key={}&fields=items/contentDetails/duration'
@@ -125,14 +125,18 @@ def home():
             else:
                 if cnt >= 500:
                     display_text = ['No of videos limited to 500.']
-                display_text += [
-                    'No of videos : ' + str(cnt), 'Average length of video : ' + parse(a / cnt),
-                    'Total length of playlist : ' + parse(a), 'At 1.25x : ' + parse(a / 1.25),
-                    'At 1.50x : ' + parse(a / 1.5), 'At 1.75x : ' + parse(a / 1.75), 'At 2.00x : ' + parse(a / 2)
-                ]
+                display_text = {
+                    "No of videos ":  str(cnt),
+                    "Average length of video" :   parse(a / cnt),
+                    "Total length of playlist ":  parse(a),
+                    "At 1.25x ":  parse(a / 1.25),
+                    "At 1.50x ":   parse(a / 1.5),
+                    "At 1.75x ":   parse(a / 1.75),
+                    "At 2.00x ":   parse(a / 2)
+                }
                 break
 
-        return display_text
+        return json.dumps(display_text)
 
 if __name__ == '__main__':
     app.run()
