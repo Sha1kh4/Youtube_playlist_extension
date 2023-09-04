@@ -2,14 +2,22 @@ const btn = document.getElementById("find");
 btn.addEventListener("click", function() {
     btn.disabled = true;
     btn.innerHTML = "Finding length...";
-    chrome.tabs.query({currentWindow: true, active: true}, function(tabs){
+    chrome.tabs.query({ currentWindow: true, active: true }, function(tabs) {
         var url = tabs[0].url;
         var xhr = new XMLHttpRequest();
         xhr.open("GET", "http://127.0.0.1:5000/summary?url=" + url, true);
+        xhr.responseType = 'json';
         xhr.onload = function() {
-            var text = xhr.responseText;
+            var jsonResponse = xhr.response;
+            var htmlString = "";
+            for (var key in jsonResponse) {
+                if (jsonResponse.hasOwnProperty(key)) {
+                    htmlString += key + ": " + jsonResponse[key] + "<br>";
+                }
+            }
             const p = document.getElementById("output");
-            p.innerHTML = text;
+            p.innerHTML = htmlString;
+
             btn.disabled = false;
             btn.innerHTML = "Find Length";
         }
