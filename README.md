@@ -2,67 +2,63 @@
 
 This Extension which would help you find total length of a playlist
 
-#### To use it on local environment 
- 
-**Step 1 : Clone the repository**
-run the following command in terminal
-```
-$ git clone https://github.com/Sha1kh4/Youtube_playlist_extension.git
-```
+#### To use it in your browser
+1. Clone the repository or download the extension files.
 
-**Step 2 : Change the directory to project folder**
-run the following command in terminal
-```
-$ cd project-2
-```
-**Step 3 : install required packages**
-run the following command in terminal
-```
-$ pip install -r req.txt
-```
-**step 4 : Get YouTube Data API v3 API key**
+    ```bash
+    git clone https://github.com/Sha1kh4/Youtube_playlist_extension.git
+    ```
+
+2. Open Google Chrome and navigate to `chrome://extensions/`.
+
+3. Enable "Developer mode" in the top right.
+
+4. Click "Load unpacked" and select the extension directory.
 
 
-To get API key enable YouTube Data API v3 (if not done already) ,
-To do so goto [YouTube Data API v3](https://console.cloud.google.com/apis/library/youtube.googleapis.com) and active the api,
-then create the api key from [Google Credentials page](https://console.cloud.google.com/apis/credentials)
-your api key may look like "uTvo3vHKpSQGOUj40f7kZLRmIkHn1qDc5Hv89Gt"
-you may refer to [this video](https://www.youtube.com/watch?v=N18czV5tj5o) if an problem occur
+## Usage
 
-**Step 5 : Add the api key to app.py file**
+1. Open a Chrome tab with a YouTube playlist.
 
-in app.py file replace "# Enter Api here to use the extension" with your api key(PS: add double codes before and after the api key)
-ie replace 
-```python
-APIS = # Enter Api here to use the extension
-```
+2. Click on the extension icon in the toolbar.
 
-with 
-```python
-APIS = "uTvo3vHKpSQGOUj40f7kZLRmIkHn1qDc5Hv89Gt"
-```
-
-**Step 6 : Load Your Extension in Chrome:**
-
-Open Chrome and go to [chrome://extensions/](chrome://extensions/). Enable "Developer mode" and click on "Load unpacked." Select the directory containing your Chrome extension files (HTML, CSS, JavaScript). Your extension should now be loaded in Chrome.
-you may refer to [this video](https://youtu.be/B8Ihv3xsWYs?si=ZCb_PcFU7wOG-PBx&t=595) if an problem occur
+3. Click the "Find Length" button to retrieve and display the playlist summary.
 
 
-**Step 7 : Run using flask run**
-run the following command in terminal
-```
-$ flask run
-```
 
-Done : now you can use extension 
+# YouTube Playlist Summary API
+
+This Flask application provides an API to retrieve summary information about a YouTube playlist. It calculates the total number of videos, average video length, and total playlist length. Additionally, it provides estimates for playlist lengths at different playback speeds.
+
+## API Response
+
+The API response will include the following information:
+
+- Number of videos in the playlist
+- Average length of a video
+- Total length of the playlist
+- Estimated lengths at different playback speeds (1.25x, 1.5x, 1.75x, 2.0x)
+
+## CORS Support
+
+This app supports Cross-Origin Resource Sharing (CORS) to allow requests from different domains. CORS is enabled using the `flask_cors` extension.
+
+## Dependencies
+
+- Flask
+- Flask-CORS
+- Requests
 
 
 ### Todo
 
 - [x] Create the extension
 - [x] Make it working on local environment
+- [x] Make it working online
 
 - [ ] Make it work for multiple playlists on a single page  
   - [ ] To show length next to the total no. of videos in a playlist(in the same div)
 
-- [ ] Make it working online
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
