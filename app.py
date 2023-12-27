@@ -6,9 +6,11 @@ import json
 import re
 import requests
 import os
+from dotenv import load_dotenv
 
 
-APIS ="AIzaSyDvUhY4xJKsjvwOyoDRAgWqkvyysP4PfgU"
+load_dotenv()
+APIS =os.getenv('API')
 
 URL1 = 'https://www.googleapis.com/youtube/v3/playlistItems?part=contentDetails&maxResults=50&fields=items/contentDetails/videoId,nextPageToken&key={}&playlistId={}&pageToken='
 URL2 = 'https://www.googleapis.com/youtube/v3/videos?&part=contentDetails&id={}&key={}&fields=items/contentDetails/duration'
