@@ -1,5 +1,6 @@
 from datetime import timedelta
 from flask import Flask, Response, request, render_template
+from flask_cors import CORS  # Import CORS from flask_cors
 import datetime
 import isodate
 import json
@@ -70,7 +71,7 @@ def find_time_slice():
 
 app = Flask(__name__)
 
-
+CORS(app)  
 @app.route("/summary")
 def home():
         playlist_link = request.args.get('url', '')
