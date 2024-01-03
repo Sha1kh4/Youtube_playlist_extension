@@ -2,3 +2,4 @@ fastapi==0.103.2
 python-dotenv==1.0.0
 uvicorn==0.22.0
 isodate==0.6.1
+requests==2.28.1
