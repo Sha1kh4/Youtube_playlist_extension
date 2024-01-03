@@ -42,6 +42,17 @@ The API response will include the following information:
 - Python 3.6+
 - FastAPI
 - Uvicorn
+## API Documentation
+
+- **Swagger UI:** Access the interactive API documentation using [Swagger UI](https://yt-2znm.onrender.com/docs).
+- **ReDoc:** For a more user-friendly documentation interface, navigate to [ReDoc](https://yt-2znm.onrender.com/redoc).
+
+## Example
+
+To retrieve information about a YouTube playlist, you can use the following example with `curl`:
+
+```bash
+curl "https://yt-2znm.onrender.com/summary?url=PLhQjrBD2T380F_inVRXMIHCqLaNUd7bN4 "
 
 
 ### Todo
