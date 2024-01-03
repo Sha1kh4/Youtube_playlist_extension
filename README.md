@@ -1,6 +1,11 @@
 # Youtube_playlist_extension
 
-This Extension which would help you find total length of a playlist
+
+## Description
+
+This project is a FastAPI application that provides a high-performance RESTful API.This Extension which would help you find total length of a playlist
+
+## Getting Started
 
 #### To use it in your browser
 1. Clone the repository or download the extension files.
@@ -23,13 +28,6 @@ This Extension which would help you find total length of a playlist
 2. Click on the extension icon in the toolbar.
 
 3. Click the "Find Length" button to retrieve and display the playlist summary.
-
-
-
-# YouTube Playlist Summary API
-
-This Flask application provides an API to retrieve summary information about a YouTube playlist. It calculates the total number of videos, average video length, and total playlist length. Additionally, it provides estimates for playlist lengths at different playback speeds.
-
 ## API Response
 
 The API response will include the following information:
@@ -39,15 +37,11 @@ The API response will include the following information:
 - Total length of the playlist
 - Estimated lengths at different playback speeds (1.25x, 1.5x, 1.75x, 2.0x)
 
-## CORS Support
+### Dependencies
 
-This app supports Cross-Origin Resource Sharing (CORS) to allow requests from different domains. CORS is enabled using the `flask_cors` extension.
-
-## Dependencies
-
-- Flask
-- Flask-CORS
-- Requests
+- Python 3.6+
+- FastAPI
+- Uvicorn
 
 
 ### Todo
